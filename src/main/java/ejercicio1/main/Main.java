@@ -1,10 +1,8 @@
-package main;
+package ejercicio1.main;
 
-import dataBase.Persistencia;
-import model.Model;
-import ui.UI;
-
-import java.awt.*;
+import ejercicio1.dataBase.Persistencia;
+import ejercicio1.model.Model;
+import ejercicio1.ui.UI;
 
 
 public class Main {

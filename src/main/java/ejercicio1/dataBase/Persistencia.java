@@ -1,6 +1,6 @@
-package dataBase;
+package ejercicio1.dataBase;
 
-import model.RegistroDeUsuario;
+import ejercicio1.model.RegistroDeUsuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

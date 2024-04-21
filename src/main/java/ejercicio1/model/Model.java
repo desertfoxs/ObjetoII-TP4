@@ -1,7 +1,4 @@
-package model;
-
-import javax.swing.*;
-import java.sql.SQLException;
+package ejercicio1.model;
 
 public class Model {
 

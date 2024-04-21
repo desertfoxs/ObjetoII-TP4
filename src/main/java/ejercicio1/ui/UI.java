@@ -1,12 +1,11 @@
-package ui;
+package ejercicio1.ui;
 
-import model.Model;
+import ejercicio1.model.Model;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 public class UI extends JFrame{
 
