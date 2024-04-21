@@ -6,18 +6,19 @@ import java.util.List;
 public class Model {
 
     private RegistroPersonas registroPersonas;
+    private LeerPersonas leerPersonas;
     private EnviarMensaje enviarMensaje;
     private String mensaje = "Feliz cumpleaños atte: compania generica";
 
-    public Model(RegistroPersonas registroPersonas, EnviarMensaje enviarMensaje) {
+    public Model(RegistroPersonas registroPersonas, EnviarMensaje enviarMensaje, LeerPersonas leerPersonas) {
         this.registroPersonas = registroPersonas;
+        this.leerPersonas = leerPersonas;
         this.enviarMensaje = enviarMensaje;
     }
 
     public void cargaEmpleados(){
 
-        LeerTXT txt = new LeerTXT();
-        List<String> listaPersonas = txt.leer();
+        List<String> listaPersonas = leerPersonas.leer();
 
         for(String persona: listaPersonas) {
             String[] parts = persona.split(",");

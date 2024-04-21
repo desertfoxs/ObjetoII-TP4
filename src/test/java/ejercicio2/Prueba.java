@@ -1,10 +1,8 @@
 package ejercicio2;
 
+import ejercicio2.dataBase.LeerTXT;
 import ejercicio2.dataBase.Persitencia;
-import ejercicio2.model.EnviarGmail;
-import ejercicio2.model.EnviarMensaje;
-import ejercicio2.model.Model;
-import ejercicio2.model.RegistroPersonas;
+import ejercicio2.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -17,10 +15,11 @@ public class Prueba {
     public void probandoIngresoPersona() {
         //RegistroPersonas registroPersonas = new Persitencia();
         //EnviarMensaje enviador = new EnviarGmail();
+        LeerPersonas leerTXT = new LeerTXT("C:/Users/desertfoxs/Desktop/txt tp4/nombres.txt");
 
         var registroPersonasFake = new RegistroPersonasFake();
         var enviadorFake = new EnviarMensajeFake();
-        Model model = new Model(registroPersonasFake, enviadorFake);
+        Model model = new Model(registroPersonasFake, enviadorFake, leerTXT);
 
         model.cargaEmpleados();
         model.verificarCumpleaños();
@@ -32,10 +31,11 @@ public class Prueba {
     public void probandoCumpleaños() {
         RegistroPersonas registroPersonas = new Persitencia();
         //EnviarMensaje enviador = new EnviarGmail();
+        LeerPersonas leerTXT = new LeerTXT("C:/Users/desertfoxs/Desktop/txt tp4/nombres.txt");
 
         //var registroPersonasFake = new RegistroPersonasFake();
         var enviadorFake = new EnviarMensajeFake();
-        Model model = new Model(registroPersonas, enviadorFake);
+        Model model = new Model(registroPersonas, enviadorFake, leerTXT);
 
         model.cargaEmpleados();
         model.verificarCumpleaños();
@@ -48,8 +48,9 @@ public class Prueba {
     public void probandoEnviarGmail() {
         RegistroPersonas registroPersonas = new Persitencia();
         EnviarMensaje enviador = new EnviarGmail();
+        LeerPersonas leerTXT = new LeerTXT("C:/Users/desertfoxs/Desktop/txt tp4/nombres.txt");
 
-        Model model = new Model(registroPersonas, enviador);
+        Model model = new Model(registroPersonas, enviador, leerTXT);
 
         model.cargaEmpleados();
         model.verificarCumpleaños();
