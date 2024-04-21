@@ -20,7 +20,7 @@ public class Persistencia implements RegistroDeUsuario {
             sent.setString(1, nombre);
             sent.setString(2, telefono);
             sent.setString(3, region);
-
+            int update = sent.executeUpdate();
             sent.close();
         } catch (SQLException icve) {    //Exeption por si intenta cargar en la BD un dispositivo con el mismo nombre.
             // System.out.println("Se violo la integridad de la BD");
