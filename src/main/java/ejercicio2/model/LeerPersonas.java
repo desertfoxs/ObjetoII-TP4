@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface LeerPersonas {
 
-    public List<String> leer();
+    public List<Empleado> leer();
 
 }

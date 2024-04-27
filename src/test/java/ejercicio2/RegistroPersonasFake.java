@@ -1,5 +1,6 @@
 package ejercicio2;
 
+import ejercicio2.model.Empleado;
 import ejercicio2.model.RegistroPersonas;
 
 import java.util.ArrayList;
@@ -10,13 +11,13 @@ public class RegistroPersonasFake implements RegistroPersonas {
     private boolean invocado = false;
 
     @Override
-    public void cargarPersonas(String apellido, String nombre, String nacimiento, String gmail) {
+    public void cargarPersonas(Empleado empleado) {
         invocado = true;
     }
 
     @Override
-    public List<String> devolverTodos() {
-        List<String> list = new ArrayList<>();
+    public List<Empleado> devolverTodos() {
+        List<Empleado> list = new ArrayList<>();
         return list;
     }
 

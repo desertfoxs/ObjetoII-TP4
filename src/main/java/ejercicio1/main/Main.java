@@ -1,7 +1,7 @@
 package ejercicio1.main;
 
 import ejercicio1.dataBase.Persistencia;
-import ejercicio1.model.Model;
+import ejercicio1.model.SistemaRegistracion;
 import ejercicio1.ui.UI;
 
 
@@ -17,8 +17,8 @@ public class Main {
                 try {
                     //Agregando un nuevo participante
                     Persistencia persistencia = new Persistencia();
-                    Model model = new Model(persistencia);
-                    UI ui = new UI(model);
+                    SistemaRegistracion sistemaRegistracion = new SistemaRegistracion(persistencia);
+                    UI ui = new UI(sistemaRegistracion);
                     ui.setupUIComponents();
 
                 } catch (Exception e) {

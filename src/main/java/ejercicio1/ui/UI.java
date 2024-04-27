@@ -1,6 +1,6 @@
 package ejercicio1.ui;
 
-import ejercicio1.model.Model;
+import ejercicio1.model.SistemaRegistracion;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -12,10 +12,10 @@ public class UI extends JFrame{
     private JTextField nombre;
     private JTextField telefono;
     private JTextField region;
-    private Model model;
+    private SistemaRegistracion sistemaRegistracion;
 
-    public UI(Model model) throws HeadlessException {
-        this.model = model;
+    public UI(SistemaRegistracion sistemaRegistracion) throws HeadlessException {
+        this.sistemaRegistracion = sistemaRegistracion;
         setupUIComponents();
     }
 
@@ -43,7 +43,7 @@ public class UI extends JFrame{
         botonCargar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    model.agregarUsuario(nombre.getText(), telefono.getText(), region.getText());
+                    sistemaRegistracion.agregarUsuario(nombre.getText(), telefono.getText(), region.getText());
                     dispose();
                 } catch (RuntimeException e1) {
                     JOptionPane.showMessageDialog(null, e1);

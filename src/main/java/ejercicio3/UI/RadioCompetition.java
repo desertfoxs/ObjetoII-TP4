@@ -1,6 +1,6 @@
 package ejercicio3.UI;
 
-import ejercicio3.model.Model;
+import ejercicio3.model.IncribirConcurso;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -27,10 +27,10 @@ public class RadioCompetition {
     private JComboBox<String> comboBox;
     private JButton btnOk;
     private JLabel lblCompetition;
-    private Model model;
+    private IncribirConcurso incribirConcurso;
 
-    public RadioCompetition(Model model) {
-        this.model = model;
+    public RadioCompetition(IncribirConcurso incribirConcurso) {
+        this.incribirConcurso = incribirConcurso;
 
         var frame = new JFrame("Inscription to Competition");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +65,7 @@ public class RadioCompetition {
         lblCompetition = new JLabel("Concurso:");
         comboBox = new JComboBox<String>();
         try {
-            List<String> nombreConcurso = this.model.todosLosConcursos();
+            List<String> nombreConcurso = this.incribirConcurso.todosLosConcursos();
             for(String nombre : nombreConcurso){
                 comboBox.addItem(nombre);
             }
@@ -77,10 +77,12 @@ public class RadioCompetition {
             public void actionPerformed(ActionEvent e) {
                 btnOk.setEnabled(false);
                 try{
-                    model.saveInscription(txtLastName.getText(), txtName.getText(), txtId.getText(), txtPhone.getText(), txtEmail.getText(), comboBox.getSelectedIndex() +1);
+                    incribirConcurso.saveInscription(txtLastName.getText(), txtName.getText(), txtId.getText(), txtPhone.getText(), txtEmail.getText(), comboBox.getSelectedIndex() +1);
                 }
                 catch (RuntimeException e1){
                     JOptionPane.showMessageDialog(null, e1);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
                 btnOk.setEnabled(true);
             }

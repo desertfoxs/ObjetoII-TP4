@@ -5,8 +5,6 @@ import ejercicio2.dataBase.Persitencia;
 import ejercicio2.model.*;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Prueba {
@@ -19,10 +17,10 @@ public class Prueba {
 
         var registroPersonasFake = new RegistroPersonasFake();
         var enviadorFake = new EnviarMensajeFake();
-        Model model = new Model(registroPersonasFake, enviadorFake, leerTXT);
+        FelicitarEmpleado felicitarEmpleado = new FelicitarEmpleado(registroPersonasFake, enviadorFake, leerTXT);
 
-        model.cargaEmpleados();
-        model.verificarCumpleaños();
+        felicitarEmpleado.cargaEmpleados();
+        felicitarEmpleado.verificarCumpleaños();
 
         assertTrue(registroPersonasFake.fueInvocado());
     }
@@ -35,10 +33,10 @@ public class Prueba {
 
         //var registroPersonasFake = new RegistroPersonasFake();
         var enviadorFake = new EnviarMensajeFake();
-        Model model = new Model(registroPersonas, enviadorFake, leerTXT);
+        FelicitarEmpleado felicitarEmpleado = new FelicitarEmpleado(registroPersonas, enviadorFake, leerTXT);
 
-        model.cargaEmpleados();
-        model.verificarCumpleaños();
+        felicitarEmpleado.cargaEmpleados();
+        felicitarEmpleado.verificarCumpleaños();
 
         assertTrue(enviadorFake.fueInvocado());
 
@@ -50,10 +48,10 @@ public class Prueba {
         EnviarMensaje enviador = new EnviarGmail();
         LeerPersonas leerTXT = new LeerTXT("C:/Users/desertfoxs/Desktop/txt tp4/nombres.txt");
 
-        Model model = new Model(registroPersonas, enviador, leerTXT);
+        FelicitarEmpleado felicitarEmpleado = new FelicitarEmpleado(registroPersonas, enviador, leerTXT);
 
-        model.cargaEmpleados();
-        model.verificarCumpleaños();
+        felicitarEmpleado.cargaEmpleados();
+        felicitarEmpleado.verificarCumpleaños();
     }
 
 }

@@ -1,22 +1,18 @@
 package ejercicio1.model;
 
-public class Model {
+public class Usuario {
 
-    private RegistroDeUsuario registroDeUsuario;
+    private String nombre;
+    private String telefono;
+    private String region;
 
-    public Model(RegistroDeUsuario registroDeUsuario) {
-        this.registroDeUsuario = registroDeUsuario;
+
+    public Usuario(String nombre, String telefono, String region) throws RuntimeException{
+        validarUsuario(nombre, telefono, region);
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.region = region;
     }
-
-    public void agregarUsuario(String nombre, String telefono, String region) throws RuntimeException {
-        try{
-            validarUsuario(nombre, telefono, region);
-            registroDeUsuario.agregarNuevoParticipante(nombre, telefono, region);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e);
-        }
-    }
-
 
     private void validarUsuario(String nombre, String telefono, String region) {
         if (nombre.isEmpty()) {
@@ -38,4 +34,15 @@ public class Model {
         return telefono.matches(regex);
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getRegion() {
+        return region;
+    }
 }

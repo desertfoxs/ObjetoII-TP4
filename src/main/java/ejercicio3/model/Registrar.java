@@ -5,8 +5,7 @@ import java.util.List;
 
 public interface Registrar {
 
-
-    public void registrarPersona(String mensaje) throws IOException;
-    public List<String> leerConcursos() throws IOException;
+    public void registrarPersona(Persona persona) throws IOException;
+    public List<String> leerNombreConcursos() throws IOException;
 
 }

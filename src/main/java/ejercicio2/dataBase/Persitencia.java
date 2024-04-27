@@ -1,5 +1,6 @@
 package ejercicio2.dataBase;
 
+import ejercicio2.model.Empleado;
 import ejercicio2.model.RegistroPersonas;
 
 import java.sql.*;
@@ -15,13 +16,13 @@ public class Persitencia implements RegistroPersonas {
             "SELECT * FROM `ejercicio2`";
 
     @Override
-    public void cargarPersonas(String apellido, String nombre, String nacimiento, String gmail) {
+    public void cargarPersonas(Empleado empleado) {
         try (Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp3_poo", "root", "");
              PreparedStatement sent = conexion.prepareStatement(sqlCreate);) {
-            sent.setString(1, apellido);
-            sent.setString(2, nombre);
-            sent.setString(3, nacimiento);
-            sent.setString(4, gmail);
+            sent.setString(1, empleado.getApellido());
+            sent.setString(2, empleado.getNombre());
+            sent.setString(3, empleado.getNacimiento());
+            sent.setString(4, empleado.getGmail());
 
             int update = sent.executeUpdate();
             sent.close();
@@ -32,16 +33,16 @@ public class Persitencia implements RegistroPersonas {
     }
 
     @Override
-    public List<String> devolverTodos() {
-        List<String> personas = new ArrayList<>();
+    public List<Empleado> devolverTodos() {
+        List<Empleado> personas = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp3_poo", "root", "");
              Statement statement = conn.createStatement();
              ResultSet rs = statement.executeQuery(sqlFindAll);)
         {
             while (rs.next()) {
-                personas.add(rs.getString("apellido") + "," + rs.getString("nombre") + "," +
-                        rs.getString("nacimiento") + ","+ rs.getString("gmail"));
+                personas.add(new Empleado(rs.getString("apellido"), rs.getString("nombre"),
+                        rs.getString("nacimiento") , rs.getString("gmail")));
             }
         } catch(SQLException e)
         {
