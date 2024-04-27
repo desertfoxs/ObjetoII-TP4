@@ -15,6 +15,7 @@ public class Main {
             @Override
             public void run() {
                 try {
+
                     GrabarYLeerTXT grabarYLeerTXT = new GrabarYLeerTXT("C:/Users/desertfoxs/Desktop/txt tp4 ejercicio 3/");
                     var BD = new GrabarLeerBD();
 
